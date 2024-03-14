@@ -31,7 +31,7 @@ function Register() {
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdJMI9-ZdTJmpzVfjX6AL4rwRP8l-vWYDklw&usqp=CAU" alt="Logo" className="w-32" />
       </header>
       <main className="bg-gray-50 p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-6">Create an Account</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">Create an Account</h2>
         <div className="space-y-4">
           <input
             type="text"

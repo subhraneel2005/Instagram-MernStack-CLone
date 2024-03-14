@@ -32,7 +32,7 @@ function LoginPage() {
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdJMI9-ZdTJmpzVfjX6AL4rwRP8l-vWYDklw&usqp=CAU" alt="Instagram Logo" className="w-32" />
       </header>
       <main className="bg-gray-50 p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-6">Login to your account</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">Login to your account</h2>
         <div className="space-y-4">
           <input
             type="text"
