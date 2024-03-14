@@ -1,28 +1,38 @@
 import React, { useState } from 'react';
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleRegister = () => {
-    // Add your registration logic here
-    console.log("Full Name:", fullName);
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const handleRegister = async() => {
+  try {
+    const response = await axios.post("http://localhost:3000/register",{
+      fullName, username, password, email
+     });
+     setIsAuthenticated(true);
+     toast.success(response.data.message);
+
+  } catch (error) {
+    toast.error("Username already exists");
+  }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white select-none">
+      <ToastContainer/>
       <header className="py-10">
         {/* Your logo */}
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdJMI9-ZdTJmpzVfjX6AL4rwRP8l-vWYDklw&usqp=CAU" alt="Logo" className="w-32" />
       </header>
       <main className="bg-gray-50 p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold mb-6">Create an Account</h2>
-        <form className="space-y-4">
+        <div className="space-y-4">
           <input
             type="text"
             placeholder="Full Name"
@@ -58,7 +68,7 @@ function Register() {
           >
             Register
           </button>
-        </form>
+        </div>
       </main>
     </div>
   );

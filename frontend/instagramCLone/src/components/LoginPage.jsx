@@ -1,25 +1,39 @@
 import React, { useState } from 'react';
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginPage() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const handleLogin = () => {
-        // Add your login logic here
-        console.log("Username:", username);
-        console.log("Password:", password);
+    const handleLogin = async() => {
+        try {
+          const response = await axios.post("http://localhost:3000/login",{
+          username, password
+        });
+        setIsAuthenticated(true);
+          setMessage(response.data.message);
+          toast.success("Login successfull");
+
+        } catch (error) {
+          toast.error("Invalid credentials! Please check your username or password.");
+        }
       };
     
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white select-none">
       <header className="py-10">
+        <ToastContainer/>
         {/* Instagram-like logo */}
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdJMI9-ZdTJmpzVfjX6AL4rwRP8l-vWYDklw&usqp=CAU" alt="Instagram Logo" className="w-32" />
       </header>
       <main className="bg-gray-50 p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold mb-6">Login to your account</h2>
-        <form className="space-y-4">
+        <div className="space-y-4">
           <input
             type="text"
             placeholder="Username"
@@ -41,7 +55,7 @@ function LoginPage() {
           >
             Login
           </button>
-        </form>
+        </div>
       </main>
     </div>
   )
