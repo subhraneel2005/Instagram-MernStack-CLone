@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { redirect } from 'react-router-dom';
 
 function Register() {
   const [fullName, setFullName] = useState('');
@@ -17,7 +18,8 @@ function Register() {
      });
      setIsAuthenticated(true);
      toast.success(response.data.message);
-
+     window.location.href("/profile");
+     
   } catch (error) {
     toast.error("Username already exists");
   }

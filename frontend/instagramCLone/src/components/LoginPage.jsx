@@ -18,10 +18,10 @@ function LoginPage() {
         setIsAuthenticated(true);
           setMessage(response.data.message);
           toast.success("Login successfull");
-
         } catch (error) {
           toast.error("Invalid credentials! Please check your username or password.");
         }
+        
       };
     
   return (
