@@ -26,7 +26,7 @@ function Register() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white select-none">
       <ToastContainer/>
-      <header className="py-10">
+      <header className="py-6">
         {/* Your logo */}
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdJMI9-ZdTJmpzVfjX6AL4rwRP8l-vWYDklw&usqp=CAU" alt="Logo" className="w-32" />
       </header>
@@ -61,6 +61,7 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
           />
+          <h1 className='text-xl text-center'>Already a user <a className=' decoration-black underline cursor-pointer' href="/login">Login</a></h1>
           <button
             type="button"
             onClick={handleRegister}

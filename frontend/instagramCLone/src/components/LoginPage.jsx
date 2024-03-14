@@ -48,6 +48,7 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
           />
+          <h1 className='text-xl text-center'>New user <a className=' decoration-black underline cursor-pointer' href="/">Register</a></h1>
           <button
             type="button"
             onClick={handleLogin}
