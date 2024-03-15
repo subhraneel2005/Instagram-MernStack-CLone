@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import Sidebar from './HomeComponents/Sidebar';
+import Stories from './HomeComponents/Stories';
+import Posts from './HomeComponents/Posts';
+import { FaUser } from 'react-icons/fa';
 function Profile() {
 
   const [user, setUser] = useState(null);
@@ -20,9 +24,21 @@ function Profile() {
       });
   }, []);
   return (
-    <div>
+    <div className='w-full min-h-screen flex'>
       <ToastContainer/>
-      <h1>Welcome to Profile page</h1>
+      <div className='flex justify-evenly w-full'>
+        <div className='w-[0%] md:w-[20%]'>
+          <Sidebar/>
+        </div>
+        
+        <div className='block w-full md:w-[80%]'>
+          <div className='flex justify-between'>
+            <Stories/>
+            {/* <div className=' mt-6 ml-4 flex gap-4'><FaUser/><p></p></div> */}
+          </div>
+          <Posts/>
+        </div>
+      </div>
     </div>
   )
 }
