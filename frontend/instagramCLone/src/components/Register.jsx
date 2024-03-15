@@ -18,7 +18,7 @@ function Register() {
      });
      setIsAuthenticated(true);
      toast.success(response.data.message);
-     
+     window.location = "/profile";
      
   } catch (error) {
     toast.error("Username already exists");

@@ -15,9 +15,11 @@ function LoginPage() {
           const response = await axios.post("http://localhost:3000/login",{
           username, password
         });
-        setIsAuthenticated(true);
+          setIsAuthenticated(true);
           setMessage(response.data.message);
           toast.success("Login successfull");
+          window.location = "/profile";
+
         } catch (error) {
           toast.error("Invalid credentials! Please check your username or password.");
         }
