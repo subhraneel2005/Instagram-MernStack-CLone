@@ -6,8 +6,12 @@ import { TbCirclePlus } from "react-icons/tb"
 import { FaUser } from "react-icons/fa";
 import logo from "../../assets/instaLogo.png"
 import ShowPosts from '../PostComponents/ShowPosts';
+import {useNavigate} from "react-router-dom";
 
 function Sidebar() {
+
+    const navigate = useNavigate();
+    const createPostRoute = "/api/post";
 
     const lists = [
         {
@@ -41,7 +45,7 @@ function Sidebar() {
                     <h1 className='mb-1 text-xl'>{nameee}</h1>
                 </div>
             ))}
-            <div className='flex gap-3 mt-6 w-fit cursor-pointer hover:bg-slate-200 rounded-full px-3 duration-300 py-2'>
+            <div className='flex gap-3 mt-6 w-fit cursor-pointer hover:bg-slate-200 rounded-full px-3 duration-300 py-2' onClick={()=>navigate(createPostRoute)}>
                     <div><TbCirclePlus size={30} onClick={<ShowPosts/>}/></div>
                     <h1 className='mb-1 text-xl'>Create post</h1>
             </div>

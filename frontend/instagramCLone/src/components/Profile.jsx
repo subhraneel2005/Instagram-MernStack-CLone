@@ -19,7 +19,6 @@ function Profile() {
       .then(response => {
         setUser(response.data);
         // Show success toast
-        toast.success('Authentication successfull');
       })
       .catch(error => {
         // Show error toast

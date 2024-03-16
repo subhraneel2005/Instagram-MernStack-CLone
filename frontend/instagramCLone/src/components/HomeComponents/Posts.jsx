@@ -16,7 +16,7 @@ const Posts = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-xl font-semibold mb-4">Posts</h1>
       {allPosts.map((post) => (
-        <div key={post._id} className="border border-gray-200 p-4 mb-4 rounded">
+        <div key={post._id} className="border border-gray-200 p-4 mb-4 rounded w-full md:w-[60%]">
           <img src={post.Imgurl} className='w-full' alt="" />
           <div className="flex items-center mb-2">
             <h1>{post.topic}</h1>
