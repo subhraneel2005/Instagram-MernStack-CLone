@@ -68,8 +68,17 @@ function UseContexrProvier({children}) {
         window.location.reload();
     }
 
+    const deletePost = (id) => {
+        axios.delete(`http://localhost:3000/${id}`).then(() => {
+            setAllPosts(oldPosts => {
+                const afterDeleted = oldPosts.filter(post => post._id !== id);
+                return afterDeleted;
+            })
+        }).catch(err=>{console.log(err)});
+    };
+
   return (
-    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message}}>
+    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,imgUrl,allPosts, getAllPosts, createPost,deletePost}}>
         {children}
     </UseContext.Provider>
   )
