@@ -85,6 +85,10 @@ const isAuthenticated = async (req, res, next) => {
     }
   };
 
+const createPosts = async(res,req) => {
+  
+}
+
 app.post("/register", register);
 app.post("/login", login);
 app.post("/logout", logout);
