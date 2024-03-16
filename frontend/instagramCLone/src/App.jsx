@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import LoginPage from './components/LoginPage'
 import Register from './components/Register'
 import { Routes, Route} from "react-router-dom";
@@ -9,6 +9,7 @@ import ShowPosts from './components/PostComponents/ShowPosts';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
       

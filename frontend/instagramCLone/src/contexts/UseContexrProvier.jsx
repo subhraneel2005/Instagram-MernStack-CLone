@@ -13,8 +13,8 @@ function UseContexrProvier({children}) {
     const [message, setMessage] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [topic, setTopic] = useState("");
-    const [imgUrl, setImgUrl] = useState(null);
-    const [videoUrl, setVideoUrl] = useState(null);
+    const [imgUrl, setImgUrl] = useState("");
+    const [videoUrl, setVideoUrl] = useState("");
     const [allPosts, setAllPosts] = useState([]);
 
     const handleRegister = async() => {
@@ -35,7 +35,6 @@ function UseContexrProvier({children}) {
           const response = await axios.post("http://localhost:3000/login",{
           username, password
         });
-          setIsAuthenticated(true);
           setMessage(response.data.message);
           toast.success("Login successfull");
           window.location = "/profile";
@@ -43,7 +42,7 @@ function UseContexrProvier({children}) {
         } catch (error) {
           toast.error("Invalid credentials! Please check your username or password.");
         }
-        
+        setIsAuthenticated(true);
       };
 
     const getAllPosts = async() => {
@@ -62,10 +61,10 @@ function UseContexrProvier({children}) {
                 return newArray;
             });
             setTopic("");
-            setImgUrl(null);
-            setVideoUrl(null);
+            setImgUrl("");
+            setVideoUrl("");
         });
-        window.location.reload();
+        window.location = "/profile"
     }
 
     const deletePost = (id) => {
@@ -78,7 +77,7 @@ function UseContexrProvier({children}) {
     };
 
   return (
-    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,imgUrl,allPosts, getAllPosts, createPost,deletePost}}>
+    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,imgUrl,allPosts, getAllPosts, createPost,deletePost,isAuthenticated}}>
         {children}
     </UseContext.Provider>
   )
