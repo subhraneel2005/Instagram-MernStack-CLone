@@ -111,9 +111,10 @@ const getAllPosts = async(req,res) => {
 
 const deletePostById = async(req,res) => {
   try {
-    const deletedPost = await postModel.findByIdAndDelete(req.params.id)
+    const deletedPost = await postModel.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedPost);
   } catch (error) {
-    
+    res.status(400).json({ message:"Error deleting this post"});
   }
 }
 
