@@ -9,7 +9,7 @@ function ShowPosts() {
     
     
 
-    const {topic,setTopic,Imgurl,setImgUrl,createPost} = useContext(UseContext);
+    const {topic,setTopic,Imgurl,setImgurl,createPost} = useContext(UseContext);
 
 
   return (
@@ -17,7 +17,7 @@ function ShowPosts() {
         <div className='block'>
             <input type="text" placeholder='Topic' value={topic} onChange={(e)=>setTopic(e.target.value)}/>
             <br />
-            <input type="text" placeholder='ImgUrl' value={Imgurl} onChange={(e)=>setImgUrl(e.target.value)} />
+            <input type="text" placeholder='ImgUrl' value={Imgurl} onChange={(e)=>setImgurl(e.target.value)} />
             <button onClick={createPost}>Post</button>
         </div>
     </div>

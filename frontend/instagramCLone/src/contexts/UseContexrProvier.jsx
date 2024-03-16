@@ -13,7 +13,7 @@ function UseContexrProvier({children}) {
     const [message, setMessage] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [topic, setTopic] = useState("");
-    const [Imgurl, setImgUrl] = useState("");
+    const [Imgurl, setImgurl] = useState("");
     const [videoUrl, setVideoUrl] = useState("");
     const [allPosts, setAllPosts] = useState([]);
 
@@ -60,8 +60,7 @@ function UseContexrProvier({children}) {
                 return newArray;
             });
             setTopic("");
-            setImgUrl("");
-            setVideoUrl("");
+            setImgurl("");
         });
         window.location = "/profile"
     }
@@ -76,7 +75,7 @@ function UseContexrProvier({children}) {
     };
 
   return (
-    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,Imgurl,allPosts, getAllPosts, createPost,deletePost,isAuthenticated}}>
+    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,Imgurl, setImgurl,allPosts, getAllPosts, createPost,deletePost,isAuthenticated}}>
         {children}
     </UseContext.Provider>
   )
