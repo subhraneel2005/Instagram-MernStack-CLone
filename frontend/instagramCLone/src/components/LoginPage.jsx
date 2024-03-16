@@ -1,30 +1,11 @@
-import React, { useState } from 'react';
-import axios from "axios";
+import React, { useContext, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UseContext from '../contexts/UseContext';
 
 function LoginPage() {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    const handleLogin = async() => {
-        try {
-          const response = await axios.post("http://localhost:3000/login",{
-          username, password
-        });
-          setIsAuthenticated(true);
-          setMessage(response.data.message);
-          toast.success("Login successfull");
-          window.location = "/profile";
-
-        } catch (error) {
-          toast.error("Invalid credentials! Please check your username or password.");
-        }
-        
-      };
+    const {handleLogin,username,password,setUsername,setPassword} = useContext(UseContext)
     
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white select-none">

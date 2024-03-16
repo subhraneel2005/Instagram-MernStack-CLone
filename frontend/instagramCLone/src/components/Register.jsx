@@ -1,29 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { redirect } from 'react-router-dom';
+import UseContext from '../contexts/UseContext';
 
 function Register() {
-  const [fullName, setFullName] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleRegister = async() => {
-  try {
-    const response = await axios.post("http://localhost:3000/register",{
-      fullName, username, password, email
-     });
-     setIsAuthenticated(true);
-     toast.success(response.data.message);
-     window.location = "/profile";
-     
-  } catch (error) {
-    toast.error("Username already exists");
-  }
-  };
+  
+  const {fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister} = useContext(UseContext);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white select-none">
