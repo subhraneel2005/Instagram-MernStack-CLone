@@ -30,7 +30,7 @@ function App() {
           <Route path='/' element={<Register />}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/profile' element={<Profile/>}/>
-          <Route path='/post' element={<ShowPosts/>}/>
+          <Route path='/api/post' element={<ShowPosts/>}/>
         </Routes>
         </UseContexrProvier>
       )

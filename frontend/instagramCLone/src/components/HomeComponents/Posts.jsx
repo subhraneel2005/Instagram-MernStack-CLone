@@ -17,9 +17,9 @@ const Posts = () => {
       <h1 className="text-xl font-semibold mb-4">Posts</h1>
       {allPosts.map((post) => (
         <div key={post._id} className="border border-gray-200 p-4 mb-4 rounded">
+          <img src={post.Imgurl} className='w-full' alt="" />
           <div className="flex items-center mb-2">
-            {/* <img className="w-8 h-8 rounded-full mr-2" src={post.imgUrl} alt="User" />
-            <span className="font-semibold">{post.username}</span> */}
+            <h1>{post.topic}</h1>
           </div>
           <div className="flex justify-between">
             <button className="flex items-center text-gray-500 mr-4">

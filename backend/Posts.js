@@ -1,5 +1,5 @@
-const { default: mongoose } = require("mongoose");
-const mongoosev = require("mongoose");
+
+const mongoose = require("mongoose");
 
 const postSchema = mongoose.Schema({
     _id: {

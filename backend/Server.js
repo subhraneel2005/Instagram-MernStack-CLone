@@ -103,7 +103,7 @@ const createPosts = async(req,res) => {
 const getAllPosts = async(req,res) => {
   try {
     const allPosts = await postModel.find();
-    res.status(200).json(allPosts)
+    res.json(allPosts)
   } catch (error) {
     res.status(404).json({ message: "No Posts Found!" });
   }

@@ -13,7 +13,7 @@ function UseContexrProvier({children}) {
     const [message, setMessage] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [topic, setTopic] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
+    const [Imgurl, setImgUrl] = useState("");
     const [videoUrl, setVideoUrl] = useState("");
     const [allPosts, setAllPosts] = useState([]);
 
@@ -53,8 +53,7 @@ function UseContexrProvier({children}) {
     const createPost = async() => {
         axios.post("http://localhost:3000/api/post", {
             topic: topic,
-            imgUrl :imgUrl,
-            videoUrl: videoUrl,
+            Imgurl :Imgurl,
         }).then(() => {
             setAllPosts(newPost => {
                 const newArray = [...allPosts, newPost];
@@ -77,7 +76,7 @@ function UseContexrProvier({children}) {
     };
 
   return (
-    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,imgUrl,allPosts, getAllPosts, createPost,deletePost,isAuthenticated}}>
+    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,Imgurl,allPosts, getAllPosts, createPost,deletePost,isAuthenticated}}>
         {children}
     </UseContext.Provider>
   )
