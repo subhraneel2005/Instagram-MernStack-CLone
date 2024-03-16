@@ -7,7 +7,7 @@ const postSchema = mongoose.Schema({
         default: () => Math.random().toString(36).substr(2,9)
     },
     topic: String,
-    Imgurl: String,
+    Imgurl: String ,
     videoUrl: String,
 });
 

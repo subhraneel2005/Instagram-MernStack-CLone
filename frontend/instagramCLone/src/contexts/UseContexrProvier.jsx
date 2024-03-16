@@ -12,8 +12,12 @@ function UseContexrProvier({children}) {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [topic, setTopic] = useState("");
+    const [imgUrl, setImgUrl] = useState(null);
+    const [videoUrl, setVideoUrl] = useState(null);
+    const [allPosts, setAllPosts] = useState([]);
 
-  const handleRegister = async() => {
+    const handleRegister = async() => {
   try {
     const response = await axios.post("http://localhost:3000/register",{
       fullName, username, password, email
@@ -41,6 +45,28 @@ function UseContexrProvier({children}) {
         }
         
       };
+
+    const getAllPosts = async() => {
+        const res = await axios.get("http://localhost:3000/post");
+        setAllPosts(res.data);
+    }
+
+    const createPost = async() => {
+        axios.post("http://localhost:3000/post", {
+            topic: topic,
+            imgUrl :imgUrl,
+            videoUrl: videoUrl,
+        }).then(() => {
+            setAllPosts(newPost => {
+                const newArray = [...allPosts, newPost];
+                return newArray;
+            });
+            setTopic("");
+            setImgUrl(null);
+            setVideoUrl(null);
+        });
+        window.location.reload();
+    }
 
   return (
     <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message}}>
