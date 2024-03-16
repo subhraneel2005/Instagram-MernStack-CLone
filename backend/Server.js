@@ -87,6 +87,7 @@ const isAuthenticated = async (req, res, next) => {
 
 const createPosts = async(res,req) => {
   const posts = new postModel({
+    id: Math.random().toString(36).substr(2,9),
     topic: req.body.topic,
     Imgurl: req.body.Imgurl,
     videoUrl: req.body.videoUrl
@@ -118,6 +119,7 @@ const deletePostById = async(req,res) => {
   }
 }
 
+//user routes
 app.post("/register", register);
 app.post("/login", login);
 app.post("/logout", logout);
@@ -125,6 +127,12 @@ app.get('/profile', isAuthenticated, (req, res) => {
     
     res.json({ message: 'Welcome to your profile' });
   });
+
+//post routes
+
+app.post("/post", createPosts);
+app.get("/post", getAllPosts);
+app.delete("/:id",  deletePostById);
 
 app.listen(PORT,() => {
     console.log(`Server is running on port : ${PORT}`);
