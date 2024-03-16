@@ -49,7 +49,7 @@ function UseContexrProvier({children}) {
      try {
       await axios.post("http://localhost:3000/logout");
       setIsAuthenticated(false);
-      window.location = '/';
+      window.location = '/logout';
       toast.success("Logged out successfully");
      } catch (error) {
       toast.error("Error logging out");
