@@ -13,12 +13,14 @@ function ShowPosts() {
 
 
   return (
-    <div className='h-[200px] w-[300px] rounded-xl bg-pink-400 flex items-center justify-around'>
-        <div className='block'>
-            <input type="text" placeholder='Topic' value={topic} onChange={(e)=>setTopic(e.target.value)}/>
-            <br />
-            <input type="text" placeholder='ImgUrl' value={Imgurl} onChange={(e)=>setImgurl(e.target.value)} />
-            <button onClick={createPost}>Post</button>
+    <div className='h-screen w-full bg-gray-200 flex items-center justify-center select-none'>
+        <div className='flex items-center justify-center h-[300px] rounded-xl p-4 bg-gray-400 w-[300px]'>
+            <div className='block'>
+              <h1 className=' text-2xl text-white font-bold text-center mb-3'>Post here</h1>
+            <input type="text" className='border-none outline-none px-4 py-2 rounded-xl mb-3 text-white bg-slate-600' placeholder='Topic' value={topic} onChange={(e)=>setTopic(e.target.value)}/>
+            <input type="text" className='border-none outline-none px-4 py-2 rounded-xl mb-3 text-white bg-slate-600' placeholder='ImgUrl' value={Imgurl} onChange={(e)=>setImgurl(e.target.value)} />
+            <button className=' p-3 rounded-xl cursor-pointer bg-blue-500 text-blue-100' onClick={createPost}>Post</button>
+            </div>
         </div>
     </div>
   )

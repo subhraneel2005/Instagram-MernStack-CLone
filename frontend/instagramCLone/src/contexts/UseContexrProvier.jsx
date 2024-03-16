@@ -45,6 +45,17 @@ function UseContexrProvier({children}) {
         setIsAuthenticated(true);
       };
 
+    const handleLogout = async() => {
+     try {
+      await axios.post("http://localhost:3000/logout");
+      setIsAuthenticated(false);
+      window.location = '/';
+      toast.success("Logged out successfully");
+     } catch (error) {
+      toast.error("Error logging out");
+     }
+    }
+
     const getAllPosts = async() => {
         const res = await axios.get("http://localhost:3000/api/post");
         setAllPosts(res.data);
@@ -75,7 +86,7 @@ function UseContexrProvier({children}) {
     };
 
   return (
-    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,Imgurl, setImgurl,allPosts, getAllPosts, createPost,deletePost,isAuthenticated}}>
+    <UseContext.Provider value={{fullName,setFullName,username,setUsername,email,setEmail,password,setPassword,handleRegister, handleLogin,message, topic,setTopic,Imgurl, setImgurl,allPosts, getAllPosts, createPost,deletePost,isAuthenticated, handleLogout}}>
         {children}
     </UseContext.Provider>
   )
