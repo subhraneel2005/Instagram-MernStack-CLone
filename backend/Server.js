@@ -85,19 +85,18 @@ const isAuthenticated = async (req, res, next) => {
     }
   };
 
-const createPosts = async(res,req) => {
+const createPosts = async(req,res) => {
+
+  const {topic,Imgurl, videoUrl} = req.body;
   const posts = new postModel({
-    id: Math.random().toString(36).substr(2,9),
-    topic: req.body.topic,
-    Imgurl: req.body.Imgurl,
-    videoUrl: req.body.videoUrl
+    topic,Imgurl,videoUrl
   });
 
   try {
     const savedPosts = posts.save();
     res.status(201).json(savedPosts);
   } catch (error) {
-    res.status(404).json({message: "Error cfreating post"})
+    res.status(404).json({message: "Error creating post"})
   }
 }
 
@@ -130,9 +129,9 @@ app.get('/profile', isAuthenticated, (req, res) => {
 
 //post routes
 
-app.post("/post", createPosts);
-app.get("/post", getAllPosts);
-app.delete("/:id",  deletePostById);
+app.post("/api/post", createPosts);
+app.get("/api/post", getAllPosts);
+app.delete("/api/:id",  deletePostById);
 
 app.listen(PORT,() => {
     console.log(`Server is running on port : ${PORT}`);

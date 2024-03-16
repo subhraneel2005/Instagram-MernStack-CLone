@@ -46,12 +46,12 @@ function UseContexrProvier({children}) {
       };
 
     const getAllPosts = async() => {
-        const res = await axios.get("http://localhost:3000/post");
+        const res = await axios.get("http://localhost:3000/api/post");
         setAllPosts(res.data);
     }
 
     const createPost = async() => {
-        axios.post("http://localhost:3000/post", {
+        axios.post("http://localhost:3000/api/post", {
             topic: topic,
             imgUrl :imgUrl,
             videoUrl: videoUrl,
@@ -68,7 +68,7 @@ function UseContexrProvier({children}) {
     }
 
     const deletePost = (id) => {
-        axios.delete(`http://localhost:3000/${id}`).then(() => {
+        axios.delete(`http://localhost:3000/api/${id}`).then(() => {
             setAllPosts(oldPosts => {
                 const afterDeleted = oldPosts.filter(post => post._id !== id);
                 return afterDeleted;
