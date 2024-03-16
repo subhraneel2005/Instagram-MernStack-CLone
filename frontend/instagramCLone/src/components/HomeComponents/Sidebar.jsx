@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { GoHomeFill } from "react-icons/go";
 import { FiSearch } from "react-icons/fi";
 import { BiVideoPlus } from "react-icons/bi";
@@ -7,11 +7,14 @@ import { FaUser } from "react-icons/fa";
 import logo from "../../assets/instaLogo.png"
 import ShowPosts from '../PostComponents/ShowPosts';
 import {useNavigate} from "react-router-dom";
+import { CiLogout } from "react-icons/ci";
+import UseContext from '../../contexts/UseContext';
 
 function Sidebar() {
 
     const navigate = useNavigate();
     const createPostRoute = "/api/post";
+    const {handleLogout} = useContext(UseContext);
 
     const lists = [
         {
@@ -48,6 +51,10 @@ function Sidebar() {
             <div className='flex gap-3 mt-6 w-fit cursor-pointer hover:bg-slate-200 rounded-full px-3 duration-300 py-2' onClick={()=>navigate(createPostRoute)}>
                     <div><TbCirclePlus size={30} onClick={<ShowPosts/>}/></div>
                     <h1 className='mb-1 text-xl'>Create post</h1>
+            </div>
+            <div className='flex gap-3 mt-6 w-fit cursor-pointer hover:bg-slate-200 rounded-full px-3 duration-300 py-2' onClick={handleLogout}>
+                    <div><CiLogout size={30}/></div>
+                    <h1 className='mb-1 text-xl'>Logout</h1>
             </div>
         </div>
     </div>
