@@ -86,7 +86,35 @@ const isAuthenticated = async (req, res, next) => {
   };
 
 const createPosts = async(res,req) => {
-  
+  const posts = new postModel({
+    topic: req.body.topic,
+    Imgurl: req.body.Imgurl,
+    videoUrl: req.body.videoUrl
+  });
+
+  try {
+    const savedPosts = posts.save();
+    res.status(201).json(savedPosts);
+  } catch (error) {
+    res.status(404).json({message: "Error cfreating post"})
+  }
+}
+
+const getAllPosts = async(req,res) => {
+  try {
+    const allPosts = await postModel.find();
+    res.status(200).json(allPosts)
+  } catch (error) {
+    res.status(404).json({ message: "No Posts Found!" });
+  }
+}
+
+const deletePostById = async(req,res) => {
+  try {
+    const deletedPost = await postModel.findByIdAndDelete(req.params.id)
+  } catch (error) {
+    
+  }
 }
 
 app.post("/register", register);
