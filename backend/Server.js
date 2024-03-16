@@ -5,8 +5,10 @@ const userModel = require("./Users");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const session = require("express-session");
+const postModel = require("./Posts");
 
 const PORT = 3000 || process.env.PORT
+mongoose.connect("mongodb://127.0.0.1:27017/instagramUsersDB");
 
 app.use(bodyParser.json());
 
