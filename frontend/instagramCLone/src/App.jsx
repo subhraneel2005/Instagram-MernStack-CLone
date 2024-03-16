@@ -5,6 +5,7 @@ import { Routes, Route} from "react-router-dom";
 import Profile from './components/Profile';
 import Loader from './components/Loader';
 import UseContexrProvier from './contexts/UseContexrProvier';
+import ShowPosts from './components/PostComponents/ShowPosts';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,7 @@ function App() {
           <Route path='/' element={<Register />}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/post' element={<ShowPosts/>}/>
         </Routes>
         </UseContexrProvier>
       )

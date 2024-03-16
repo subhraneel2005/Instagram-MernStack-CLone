@@ -5,6 +5,7 @@ import { BiVideoPlus } from "react-icons/bi";
 import { TbCirclePlus } from "react-icons/tb"
 import { FaUser } from "react-icons/fa";
 import logo from "../../assets/instaLogo.png"
+import ShowPosts from '../PostComponents/ShowPosts';
 
 function Sidebar() {
 
@@ -26,11 +27,6 @@ function Sidebar() {
         },
         {
             id: 4,
-            nameee: "Create",
-            iconName: <TbCirclePlus size={30}/>,
-        },
-        {
-            id: 5,
             nameee: "Profile",
             iconName: <FaUser size={30}/>,
         },
@@ -45,6 +41,10 @@ function Sidebar() {
                     <h1 className='mb-1 text-xl'>{nameee}</h1>
                 </div>
             ))}
+            <div className='flex gap-3 mt-6 w-fit cursor-pointer hover:bg-slate-200 rounded-full px-3 duration-300 py-2'>
+                    <div><TbCirclePlus size={30} onClick={<ShowPosts/>}/></div>
+                    <h1 className='mb-1 text-xl'>Create post</h1>
+            </div>
         </div>
     </div>
   )

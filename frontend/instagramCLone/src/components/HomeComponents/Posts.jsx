@@ -1,11 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FaHeart, FaComment, FaShare } from 'react-icons/fa';
 import UseContext from '../../contexts/UseContext';
+import Button from '@mui/material/Button';
 
 const Posts = () => {
   
 
-  const {allPosts} = useContext(UseContext);
+  const {allPosts,getAllPosts,deletePost} = useContext(UseContext);
+
+  useEffect(() => {
+    getAllPosts();
+  },[])
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -18,16 +23,9 @@ const Posts = () => {
           </div>
           <div className="flex justify-between">
             <button className="flex items-center text-gray-500 mr-4">
-              <FaHeart className="mr-1" />
-              <span>Like</span>
-            </button>
-            <button className="flex items-center text-gray-500 mr-4">
-              <FaComment className="mr-1" />
-              <span>Comment</span>
-            </button>
-            <button className="flex items-center text-gray-500">
-              <FaShare className="mr-1" />
-              <span>Share</span>
+            <Button variant="outlined" color='error' onClick={()=>deletePost(post._id)}>
+              Delete
+            </Button>
             </button>
           </div>
         </div>
